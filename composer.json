@@ -1,0 +1,15 @@
+{
+    "name": "ivan/php_webcrwler",
+    "description": "Projeto de exemplo de como usar o composer",
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "IvanRezini",
+        "email": "47368365+IvanRezini@users.noreply.github.com"
+    }],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/dom-crawler": "^4.3",
+        "symfony/css-selector": "^4.3"
+    }
+}
