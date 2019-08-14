@@ -2,19 +2,17 @@
 //Inclui as classes a medida que sao necessariass
 require 'vendor/autoload.php';
 
+use SENAI\BuscadorDeCursos\Buscador;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
-$client = new \GuzzleHttp\Client();
-$response = $client->request('GET', 'https://www.sc.senai.br/cursos/curso-tecnico');
 
-$html = $response->getBody();
-echo $response->getStatusCode();
-
+$client = new Client(['base_uri' => 'https://www.sc.senai.br']);
 $crawler = new Crawler();
-$crawler->addHtmlContent($html);
-$cursos = $crawler->filter("div.card-detalhes__main-info > p");
+$buscador = new Buscador($client, $crawler);
+$cursos = $buscador->buscar('/cursos/curso-tecnico');
+
 
 foreach ($cursos as $curso) {
-    echo $curso->textContent . PHP_EOL;
+    echo $curso . PHP_EOL;
 }
